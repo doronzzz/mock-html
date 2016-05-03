@@ -5,17 +5,41 @@
 
 		<link rel="stylesheet" href="style.css"/>
 
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-		
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900italic,900' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+		<script>
+			$(function(){
+				$('.sign-in').on('click',function(){
+					$('body').toggleClass('show-login-dialog');
+				});
+
+				$('.close-sign-in').on('click',function(){
+					$('body').removeClass('show-login-dialog');
+				});
+
+				$('.modal-overlay').on('click',function(){
+					$('body').removeClass('show-login-dialog');
+				})
+
+			})
+			
+		</script>
 
 	</head>
 
 	<body>
 
+		<div class="modal-overlay"></div>
 
-		<div class="top-bar">
+
+
+		<div class="top-bar container">
 			<div class="pull-right">
 
 				<div class="">
@@ -31,9 +55,41 @@
 							Cart 
 						</span>
 					
-					
-						<span class="btn btn-primary btn-sm">
-							Sign In
+						<span class="login">
+							<span class="btn btn-primary btn-sm sign-in">
+								Sign In
+							</span>
+							<div class="login-dialog">
+								<div class="close-sign-in pull-right">
+									<i class="fa fa-close"></i>
+								</div>
+
+								<div class="">
+									<input class="form-control" type="text" placeholder="Enter ID or Mobile #"/>
+								</div>
+
+								<div class="">
+									<input class="form-control" type="text" placeholder="Password"/>
+								</div>
+
+								<div class="">
+										<input class=""  type="checkbox" id="remember-me"/>
+										<label for="remember-me" class="text-muted">
+											Remember me on this computer
+										</label>
+								</div>
+
+								<div class="btn btn-primary btn-lg btn-block">
+									Sign in
+								</div>
+
+								<label class="helper-text text-muted">
+									Don't have an account yet?
+									<a> Sign up now!</a>
+								</label>
+
+							</div>
+
 						</span>
 					
 				</div>
@@ -58,167 +114,90 @@
 		</nav>
 
 		<div class="container">
-			<div class="caruosel">
+
+
+
+		<div class="product-main-banner">
+
+		  <!-- Wrapper for slides -->
+
+		    <div class="item active" style="background:url(resources/product-bg.png); height:549px;background-size:100%; padding:60px;">
+		    	<!-- <div class="close-ribbon"></div> -->
 				<div class="row">
 					<div class="col-md-6">
 						<img src="resources/devices-icon.png"/>
 					</div>
-					<div class="col-md-6" style="position:relative;">
-						<div class="close-ribbon"></div>
-						<h3>
-							Great Devices.
-							<br/>
-							Affordable Prices.
-						</h3>
+					<div class="col-md-6">
+						<div>
+							<h3>Great Devices.</h3>
+							<h3>Affordable Prices.</h3>
+						</div>
 						<p class="text-muted">
-							Lorem Impsum Lorem Impsum Lorem Impsum Lorem Impsum 
+							Shop our large selection of devices and save big for  the whole family. Order now!
 						</p>
-						<div class="btn btn-success">SHOP NOW</div>
+						<div class="btn btn-success rounded-btn">SHOP NOW</div>
 					</div>
 				</div>
-
-			</div>
-			
-			<div class="banners">
-				<div class="row">
-					<div class="col-md-4 home-banner">
-
-						<div class="banner-icon home-banner">
-							<img src="resources/logos-icon.png"/>
-						</div>
-						<div class="banner-desc">
-							<span class="h4">
-								Keep it simple
-								with our new mobile app.
-							</span>
-						</div>
-						<div class="link">
-							<a class="banner-link">Download Now > </a>
-						</div>
-					</div>
+		    </div>
 
 
-					<div class="col-md-4 home-banner">
-						<div class="border-line border-right"></div>
-						<div class="border-line border-left"></div>
-
-						<div class="banner-icon">
-							<img src="resources/differently-icon.png"/>
-						</div>
-						<div class="banner-desc">
-							<span class="h4">
-								Unlimited streaming,
-								No overages.
-							</span>
-						</div>
-						<div class="link">
-							<a class="banner-link">Free your data > </a>
-						</div>
-					</div>
+		</div>
 
 
-					<div class="col-md-4 home-banner">
-						<div class="banner-icon">
-							<img src="resources/map-icon.png"/>
-						</div>
-						<div class="banner-desc">
-							<span class="h4">
-								Let's set the record
-								Straight on coverage
-							</span>
-						</div>
-						<div class="link">
-							<a class="banner-link">See how > </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-
-
-
-
-
-
-
-
-			<div class="plan-select-container">
-
-				<h3>
-					One plan. Pick a size. Simple.
-				</h3>
-
-				<div class="plans-selection">
-					
-					<div class="plan-item">
-						<div class="plan-icon">
-							<span class="plan-name">
-								S
-							<span>
-							<div class="plan-color red"></div>
-						</div>
-						<div class="plan-price">
-							1GB/30$
-						</div>
-					</div>
-
-					<div class="plan-item">
-						<div class="plan-icon">
-							<span class="plan-name">
-								S
-							<span>
-							<div class="plan-color yellow"></div>
-						</div>
-						<div class="plan-price">
-							1GB/30$
-						</div>
-					</div>
-
-					<div class="plan-item">
-						<div class="plan-icon">
-							<span class="plan-name">
-								S
-							<span>
-							<div class="plan-color blue"></div>
-						</div>
-						<div class="plan-price">
-							1GB/30$
-						</div>
-					</div>
-
-					<div class="plan-item">
-						<div class="plan-icon">
-							<span class="plan-name">
-								S
-							<span>
-							<div class="plan-color orange"></div>
-						</div>
-						<div class="plan-price">
-							1GB/30$
-						</div>
-					</div>
-
-					<div class="plan-item">
-						<div class="plan-icon">
-							<span class="plan-name">
-								S
-							<span>
-							<div class="plan-color green"></div>
-						</div>
-						<div class="plan-price">
-							1GB/30$
-						</div>
-					</div>
-
-
-				</div>
-
-			</div>
 		</div>
 		<footer>
 
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-3">
+						<h3>SHOP</h3>
+						<div class="link-list">
+							<a class="color-blue">LINK 1</a>
+							<a class="color-blue">LINK 2</a>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<h3>NO CONTRACT PLANS</h3>
+						<div class="link-list">
+							<a class="color-blue">LINK 1</a>
+							<a class="color-blue">LINK 2</a>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<h3>SOME USEFUL LINK</h3>
+						<div class="link-list">
+							<a class="color-blue">LINK 1</a>
+							<a class="color-blue">LINK 2</a>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<h3>CONNECT WITH US</h3>
+						<div class="social">
+							<div class="social-btn">
+								<i class="fa fa-facebook"></i>
+							</div>
+							<div class="social-btn">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<div class="social-btn">
+								<i class="fa fa-youtube"></i>
+							</div>
+							<div class="social-btn">
+								<i class="fa fa-instagram"></i>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 		</footer>
-		
 	</body>
 
 </html>
+
+
