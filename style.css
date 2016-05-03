@@ -14,9 +14,27 @@ body .navbar-default{
 
 footer {
 	background:#cdcbcb;
-	height:200px;
+	min-height:200px;
+  padding-bottom: 25px;
 	margin-top: 75px;
 }
+
+
+footer .link-list a{
+  display: block;
+    color:#3399cc;
+  text-transform: capitalize;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+footer .row h3 {
+  text-transform: uppercase;
+    font-weight: bold;
+    font-size:18px;
+}
+
+
 
 body nav{
 	height:75px;
@@ -41,17 +59,6 @@ ul.nav li a{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 32px;
-}
-
-footer .link-list a{
-	display: block;
-	text-transform: lowercase;
-}
-
-footer .row h3 {
-	text-transform: uppercase;
-    font-weight: bold;
-    font-size:18px;
 }
 
 .social-btn {
