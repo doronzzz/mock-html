@@ -315,7 +315,8 @@ body.show-login-dialog .login-dialog{
 	display: block;
 }
 
-body.show-login-dialog .modal-overlay{
+body.show-login-dialog .modal-overlay,
+body.show-email-dialog .modal-overlay{
     display: block;
     position: fixed;
     background: #000;
@@ -326,7 +327,7 @@ body.show-login-dialog .modal-overlay{
     top: 0px;
 }
 
-.close-sign-in {
+.close-dialog  {
 	color:#999;
 	cursor: pointer;
 	position: relative;
@@ -427,6 +428,37 @@ body.show-login-dialog .modal-overlay{
   color: #333;
   -webkit-transition: line-height 0.5s;
   transition: line-height 0.5s;
+}
+
+
+
+
+
+
+/******* REQ EMAIL DIALOG ****/
+
+
+body.show-email-dialog .req-email-dialog {
+  display: block;
+}
+
+.req-email-dialog {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    z-index: 999999;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    left: 50%;
+    top: 15%;
+    margin-left: -150px;
+    padding: 20px;
+}
+
+.req-email-dialog input.form-control {
+    margin: 12px 0px;
 }
 
 

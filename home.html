@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="style.css"/>
 
 		<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js">
+		</script>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -15,16 +17,36 @@
 
 		<script>
 			$(function(){
+				debugger;
+				$.get('/mockdata/get_offers.json',
+					function(obj,status,xhr){
+
+					var source   = $("#offers_template").html();
+					var template = Handlebars.compile(source);
+					var context = obj;
+					var html    = template(context);
+					$('body #carousel-container').append(html);
+					$($('.carousel-indicators li')[0]).addClass('active');
+					$($('.carousel-inner .item')[0]).addClass('active');
+
+				});
+
+				setTimeout(function(){
+					$('body').addClass('show-email-dialog');
+				},3000)
+
 				$('.sign-in').on('click',function(){
 					$('body').toggleClass('show-login-dialog');
 				});
 
-				$('.close-sign-in').on('click',function(){
+				$('.close-dialog').on('click',function(){
 					$('body').removeClass('show-login-dialog');
+					$('body').removeClass('show-email-dialog');
 				});
 
 				$('.modal-overlay').on('click',function(){
 					$('body').removeClass('show-login-dialog');
+					$('body').removeClass('show-email-dialog');
 				})
 
 			})
@@ -35,7 +57,66 @@
 
 	<body>
 
+		<script type="text/x-handlebars-template" id="offers_template">
+		<div id="carousel-example-generic" class="carousel home-car slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		  	{{#each offers}}
+			    	<li data-target="#carousel-example-generic" data-slide-to="{{@index}}">
+			    	</li>
+		    {{/each}}
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+				  {{#each offers}}
+				  	<div class="item">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="resources/devices-icon.png"/>
+							</div>
+							<div class="col-md-6">
+								<div>
+									<h3>Great Devices.</h3>
+									<h3>Affordable Prices.</h3>
+								</div>
+								<p class="text-muted">
+									{{text}}
+								</p>
+								<a class="btn btn-success rounded-btn" href="product.html">
+									SHOP NOW
+								</a>
+							</div>
+						</div>
+				    </div>
+				  {{/each}}
+		  </div>
+
+		</div>
+
+		</script>
+
+
 		<div class="modal-overlay"></div>
+
+
+			<div class="req-email-dialog">
+				<div class="close-dialog pull-right">
+					<i class="fa fa-close"></i>
+				</div>
+
+				<h5 class="helper-text text-muted">
+					Lorem Impsum Lorem ipsum dolor sit amet, consectetur adipiscing elit
+				</h5>
+
+				<div class="">
+					<input class="form-control" type="text" placeholder="Enter Email or Mobile #"/>
+				</div>
+
+				<div class="btn btn-primary btn-lg btn-block">
+					Submit
+				</div>
+			</div>
 
 
 
@@ -60,7 +141,7 @@
 								Sign In
 							</span>
 							<div class="login-dialog">
-								<div class="close-sign-in pull-right">
+								<div class="close-dialog  pull-right">
 									<i class="fa fa-close"></i>
 								</div>
 
@@ -115,58 +196,9 @@
 
 		<div class="container">
 
+			<div id="carousel-container">
 
-
-		<div id="carousel-example-generic" class="carousel home-car slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		  </ol>
-
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-		    <div class="item active">
-				<div class="row">
-					<div class="col-md-6">
-						<img src="resources/devices-icon.png"/>
-					</div>
-					<div class="col-md-6">
-						<div>
-							<h3>Great Devices.</h3>
-							<h3>Affordable Prices.</h3>
-						</div>
-						<p class="text-muted">
-							Shop our large selection of devices and save big for  the whole family. Order now!
-						</p>
-						<a class="btn btn-success rounded-btn" href="product.html">
-							SHOP NOW
-						</a>
-					</div>
-				</div>
-		    </div>
-		    <div class="item">
-		    	<div class="row">
-					<div class="col-md-6">
-						<img src="resources/devices-icon.png"/>
-					</div>
-					<div class="col-md-6">
-						<div>
-							<h3>Great Devices.</h3>
-							<h3>Affordable Prices.</h3>
-						</div>
-						<p class="text-muted">
-							Shop our large selection of devices and save big for  the whole family. Order now!
-						</p>
-						<a class="btn btn-success rounded-btn" href="product.html">
-							SHOP NOW
-						</a>
-					</div>
-				</div>
-		    </div>
-		  </div>
-
-		</div>
+			</div>
 
 
 
