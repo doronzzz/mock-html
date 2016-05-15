@@ -461,6 +461,10 @@ body.show-email-dialog .req-email-dialog {
     margin: 12px 0px;
 }
 
-
+.col-md-6.bnr {
+    text-align: center;
+    margin-top: 15px;
+}
 
 /***** PRODUCT END ****/
+
