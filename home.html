@@ -61,7 +61,7 @@
 				  {{#each offers}}
 				  	<div class="item">
 
-				  	<img src="http://192.168.8.207/{{imageId}}"/>
+				  	<img src="http://192.168.8.207{{imageId}}"/>
 
 						<!-- <div class="row">
 							<div class="col-md-6">
@@ -415,7 +415,7 @@
 
 				console.log(UserSession.getUserInfo());
 
-				$.get(API.endPoints.offers,
+				$.get(API.endPoints.offers.url,
 					function(obj,status,xhr){
 
 					var arr = [];
