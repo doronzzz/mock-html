@@ -14,48 +14,43 @@
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900italic,900' rel='stylesheet' type='text/css'>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-		<script>
-			$(function(){
-				debugger;
-				$.get('/mockdata/get_offers.json',
-					function(obj,status,xhr){
-
-					var source   = $("#offers_template").html();
-					var template = Handlebars.compile(source);
-					var context = obj;
-					var html    = template(context);
-					$('body #carousel-container').append(html);
-					$($('.carousel-indicators li')[0]).addClass('active');
-					$($('.carousel-inner .item')[0]).addClass('active');
-
-				});
-
-				setTimeout(function(){
-					$('body').addClass('show-email-dialog');
-				},3000)
-
-				$('.sign-in').on('click',function(){
-					$('body').toggleClass('show-login-dialog');
-				});
-
-				$('.close-dialog').on('click',function(){
-					$('body').removeClass('show-login-dialog');
-					$('body').removeClass('show-email-dialog');
-				});
-
-				$('.modal-overlay').on('click',function(){
-					$('body').removeClass('show-login-dialog');
-					$('body').removeClass('show-email-dialog');
-				})
-
-			})
-			
-		</script>
-
 	</head>
 
 	<body>
+
+
+		<script type="text/x-handlerbars-template" id="user-fields-modal">
+			
+
+			<div class="req-email-dialog">
+				<div class="close-dialog pull-right">
+					<i class="fa fa-close"></i>
+				</div>
+
+				<h5 class="helper-text text-muted">
+					Lorem Impsum Lorem ipsum dolor sit amet, consectetur adipiscing elit
+				</h5>
+
+				{{#each fields}}
+				<div class="fields">
+					<input class="form-control" type="{{type}}" name="{{name}}" placeholder="{{fieldName}}"/>
+				</div>
+				{{/each}}
+
+				<div class="btn btn-primary btn-lg btn-block" id="submit-fields">
+					Submit
+				</div>
+			</div>
+
+			<script>
+					
+			$('#submit-fields').on('click',function(){
+				alert(123);
+			});
+
+			</script>
+
+		</script>
 
 		<script type="text/x-handlebars-template" id="offers_template">
 		<div id="carousel-example-generic" class="carousel home-car slide" data-ride="carousel">
@@ -71,7 +66,10 @@
 		  <div class="carousel-inner" role="listbox">
 				  {{#each offers}}
 				  	<div class="item">
-						<div class="row">
+
+				  	<img src="http://192.168.8.207/{{imageId}}"/>
+
+						<!-- <div class="row">
 							<div class="col-md-6">
 								<img src="resources/devices-icon.png"/>
 							</div>
@@ -87,7 +85,7 @@
 									SHOP NOW
 								</a>
 							</div>
-						</div>
+						</div> -->
 				    </div>
 				  {{/each}}
 		  </div>
@@ -98,26 +96,6 @@
 
 
 		<div class="modal-overlay"></div>
-
-
-			<div class="req-email-dialog">
-				<div class="close-dialog pull-right">
-					<i class="fa fa-close"></i>
-				</div>
-
-				<h5 class="helper-text text-muted">
-					Lorem Impsum Lorem ipsum dolor sit amet, consectetur adipiscing elit
-				</h5>
-
-				<div class="">
-					<input class="form-control" type="text" placeholder="Enter Email or Mobile #"/>
-				</div>
-
-				<div class="btn btn-primary btn-lg btn-block">
-					Submit
-				</div>
-			</div>
-
 
 
 		<div class="top-bar container">
@@ -431,6 +409,84 @@
 			</div>
 
 		</footer>
+
+
+
+
+
+		<script src="mods.js" type="text/javascript"></script>
+		<script>
+
+			$(function(){
+				
+				console.log(userSession.getUserInfo());
+
+				$.get(API.endPoints.offers,
+					function(obj,status,xhr){
+
+					var arr = [];
+
+					for (var i in obj.offers){
+
+						if(obj.offers[i].imageId){
+							var str = obj.offers[i].imageId;
+							obj.offers[i].imageId = str.replace('jpg','png');
+						}
+
+						if(obj.offers[i].requiredFields){
+							arr.push(obj.offers[i].requiredFields[0]);
+						}
+
+					}
+
+					console.log(arr);
+
+					if(arr.length !== 0){
+						$('body').addClass('show-email-dialog');
+							
+						var source = $("#user-fields-modal").html();
+						var fieldsTmpl = Handlebars.compile(source);
+						var context = {"fields":arr};
+						var html = fieldsTmpl(context);
+						$('body').append(html);
+					}
+					
+					var source = $("#offers_template").html();
+					var template = Handlebars.compile(source);
+					var context = obj;
+					var html = template(context);
+					$('body #carousel-container').append(html);
+					$($('.carousel-indicators li')[0]).addClass('active');
+					$($('.carousel-inner .item')[0]).addClass('active');
+
+				});
+
+			});
+
+
+			$(function(){
+				
+				$('.sign-in').on('click',function(){
+					$('body').toggleClass('show-login-dialog');
+				});
+
+				$(document).on('click','.close-dialog', function(){
+					$('body').removeClass('show-login-dialog');
+					$('body').removeClass('show-email-dialog');
+				});
+
+				$('.modal-overlay').on('click',function(){
+					$('body').removeClass('show-login-dialog');
+					$('body').removeClass('show-email-dialog');
+				});
+
+			});
+			
+		</script>
+
+
+
+
 	</body>
 
 </html>
