@@ -1,5 +1,5 @@
 
-			var userSession = (function(){
+			var UserSession = (function(){
 
 					var public = {};
 					var private = {
@@ -7,26 +7,54 @@
 					};
 
 					private.login = function(fields){
+						var currentSession = private.getUser();
+
 						var userSession = {
-							lastLogin: new Date().valueOf(),
+							lastChange: new Date().valueOf(),
 							sessionFields:fields
 						}
-						var str = JSON.stringify(userSession);
+
+						var merged = $.extend( true, currentSession,userSession );
+
+						if(currentSession && currentSession.sessionFields){
+							for(var curField in currentSession.sessionFields){
+								merged.sessionFields.push(currentSession.sessionFields[curField]);
+							}
+						}
+						
+
+						var str = JSON.stringify(merged);
 						window.localStorage.setItem(private.sessionName,str);
 						return private.getUser();
 					}
 
 					private.logout = function(fields){
-						window.localStorage.clearItem(private.sessionName);
+						window.localStorage.clear();
 					}
 
 					private.getUser = function(){
-						var answer = {};
 						try{
 							answer = JSON.parse(window.localStorage.getItem(private.sessionName));
 						}catch(e){}
 
 						return answer;
+					}
+
+					private.hasFieldInSession = function(fieldName){
+						var user = private.getUser();
+						var bool = false;
+						if(user && user.sessionFields){
+							for(var curField in user.sessionFields){
+								if( user.sessionFields[curField]['name'] == fieldName ){
+									bool = true;
+								}
+							}
+						}
+						return bool;
+					}
+
+					public.has = function(fieldName){
+						return private.hasFieldInSession(fieldName);
 					}
 
 					public.logInUser = function(fieldsArr){

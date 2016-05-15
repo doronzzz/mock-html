@@ -42,14 +42,6 @@
 				</div>
 			</div>
 
-			<script>
-					
-			$('#submit-fields').on('click',function(){
-				alert(123);
-			});
-
-			</script>
-
 		</script>
 
 		<script type="text/x-handlebars-template" id="offers_template">
@@ -419,7 +411,7 @@
 
 			$(function(){
 				
-				console.log(userSession.getUserInfo());
+				console.log(UserSession.getUserInfo());
 
 				$.get(API.endPoints.offers,
 					function(obj,status,xhr){
@@ -466,6 +458,45 @@
 
 			$(function(){
 				
+				UserSession.logInUser([]);
+				if( UserSession.has('phoneNum') ) {
+					$('body').addClass('is-logged-in')
+				}
+
+				$('.login .btn-block').on('click',function(e){
+					var phoneInput = $('.login input')[0];
+					var fields = [{
+								'type':'text',
+								'name':'phoneNum',
+								'value':$(phoneInput).val()
+							}]
+
+					UserSession.logInUser(fields);
+				});
+
+
+				$(document).on('click','#submit-fields',function(){
+
+					var fields = [];
+					var inputs = $('.req-email-dialog .fields input');
+					for (var i = 0; i<inputs.length; i++){
+						
+						var fName = $(inputs[i]).attr('name');
+						var fVal = $(inputs[i]).val();
+						var field = {
+							'type':'text',
+							'name': fName,
+							'value': fVal
+						}
+
+						fields.push(field);
+					}
+
+					UserSession.logInUser(fields);
+
+				});
+					
+
 				$('.sign-in').on('click',function(){
 					$('body').toggleClass('show-login-dialog');
 				});
