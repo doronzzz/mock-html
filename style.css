@@ -97,7 +97,8 @@ ul.nav li a{
 
 .contact-us,
 .cart,
-.sign-in{
+.sign-in,
+.logged-in{
 	font-size:10px;
 	padding:0px 4px;
 	cursor: pointer;
@@ -338,7 +339,22 @@ body.show-email-dialog .modal-overlay{
 	display: none;
 }
 
-.login-dialog input.form-control {
+
+body.is-logged-in .logged-in {
+  display: inline-block;
+}
+
+body .logged-in {
+  display: none;
+}
+
+
+body.is-logged-in .sign-in{
+  display: none;
+}
+
+.login-dialog input.form-control,
+input.form-control {
     border-radius: 0px;
     margin: 10px 0px;
     height: 30px;
@@ -349,7 +365,8 @@ body.show-email-dialog .modal-overlay{
     font-size: 11px;
 }
 
-.login-dialog .btn-block {
+.login-dialog .btn-block,
+.btn-block {
     border-radius: 0px;
     margin: 20px 0px;
 }
