@@ -6,7 +6,7 @@
 					var msisdn = UserSession.getField('msisdn');
 					var myData = {subscriberId:subId,url:window.location.href};
 					if(msisdn){
-						myData.msisdn = msisdn;
+						myData.msisdn = msisdn.value;
 					}
 					
 					$.ajax({

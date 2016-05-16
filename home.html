@@ -34,11 +34,33 @@
 					Keep in touch
 				</h4>
 
-				{{#each fields}}
+				{{#each fields.fieldsObj.text}}
 					<div class="fields">
-						<input class="form-control" type="{{type}}" name="{{name}}" placeholder="{{fieldName}}"/>
+						<input class="form-control" type="text" name="{{name}}" placeholder="{{fieldName}}"/>
 					</div>
 				{{/each}}
+
+				{{#each fields.fieldsObj.checkbox}}
+					<div class="fields">
+						<label>{{fieldName}}</label>
+						<input class="form-control" type="checkbox" name="{{name}}"/>
+					</div>
+				{{/each}}
+
+				{{#each fields.fieldsObj.email}}
+					<div class="fields">
+						<label>{{fieldName}}</label>
+						<input class="form-control" type="email" name="{{name}}"/>
+					</div>
+				{{/each}}
+
+				{{#each fields.fieldsObj.password}}
+					<div class="fields">
+						<label>{{fieldName}}</label>
+						<input class="form-control" type="password" name="{{name}}"/>
+					</div>
+				{{/each}}
+
 
 				<div class="btn btn-primary btn-lg btn-block" id="submit-fields">
 					SEND
@@ -486,7 +508,12 @@
 				  success: function(response,status,xhr) {
 				    //Do Something
 				    var obj = JSON.parse(response);
-				    var arr = [];
+				    var fieldsObj = {
+				    	text:[],
+				    	checkbox:[],
+				    	email:[],
+				    	password:[]
+				    };
 				    
 				    //if error do nothing.
 				    if(obj.status.success === "false"){
@@ -501,7 +528,21 @@
 						}
 
 						if(obj.offers[i].requiredFields){
-							arr.push(obj.offers[i].requiredFields[0]);
+							for( var fld = 0; fld<obj.offers[i].requiredFields.length; fld++){
+								var zisField = obj.offers[i].requiredFields[fld];
+								if(zisField.type === "text"){
+									fieldsObj.text.push(obj.offers[i].requiredFields[fld]);
+								}
+								if(zisField.type === "boolean"){
+									fieldsObj.checkbox.push(obj.offers[i].requiredFields[fld]);
+								}
+								if(zisField.type === "password"){
+									fieldsObj.password.push(obj.offers[i].requiredFields[fld]);
+								}
+								if(zisField.type === "email"){
+									fieldsObj.email.push(obj.offers[i].requiredFields[fld]);
+								}
+							}
 						}
 
 					}
@@ -513,7 +554,7 @@
 							
 						var source = $("#user-fields-modal").html();
 						var fieldsTmpl = Handlebars.compile(source);
-						var context = {"fields":arr};
+						var context = {"fields":fieldsObj};
 						var html = fieldsTmpl(context);
 						$('body').append(html);
 					}
