@@ -68,14 +68,14 @@
 					}
 
 					UserSession.logInUser(fields);
-
+					var subId = UserSession.getUserInfo().subId;
 					var bodyParams = UserSession.getUserInfo().sessionFields;
-					bodyParams.push({"value": UserSession.getUserInfo().subId,name:"subscriberId"});
+					bodyParams.push({"value": subId,name:"subscriberId"});
 					bodyParams.push({"value": window.location.href,name:"referer"})
 
 					$.ajax({
 						type:"post",
-						url:"/api/web"+API.endPoints.updateSubscriber.url,
+						url:"/api/web"+API.endPoints.updateSubscriber.url + "?subscriberId=" + subId ,
 						data:{requiredFields:JSON.stringify(bodyParams)}
 					});
 
