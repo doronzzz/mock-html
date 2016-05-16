@@ -35,6 +35,7 @@
 
 				var userSession = {
 					lastChange: new Date().valueOf(),
+					subId:private.getSubId(),
 					sessionFields:fields
 				}
 
@@ -50,6 +51,19 @@
 				var str = JSON.stringify(merged);
 				window.localStorage.setItem(private.sessionName,str);
 				return private.getUser();
+			}
+
+			private.getSubId = function(){
+				var subId = new Date().valueOf()+"_"+ navigator.userAgent.replace(/ /g, "_");
+				var currentSubId = window.localStorage.getItem('subId');
+				var mySubId
+				if(currentSubId){
+					mySubId = currentSubId
+				}else{
+					window.localStorage.setItem('subId',subId);
+				}
+
+				return mySubId;
 			}
 
 			private.logout = function(fields){
@@ -105,7 +119,7 @@
 			// msisdn 
 			// The phone number submitted in sign in form
 			// optional
-			'offers':{url:'/api/web/get_offers.json',type:"get"},
+			'offers':{url:'/api/web/get-offers.php',type:"get"},
 
 			// Show offer
 			// GET

@@ -3,10 +3,14 @@
 
 				console.log(UserSession.getUserInfo());
 
-				$.get(API.endPoints.offers.url,
-					function(obj,status,xhr){
+				$.ajax({
+				  url: API.endPoints.offers.url,
+				  type: "get", //send it through get method
+				  data:{subscriberId:window.localStorage.getItem('subId')},
+				  success: function(response,status,xhr) {
+				    //Do Something
 
-					var arr = [];
+				    var arr = [];
 
 					for (var i in obj.offers){
 
@@ -41,7 +45,13 @@
 					$($('.carousel-indicators li')[0]).addClass('active');
 					$($('.carousel-inner .item')[0]).addClass('active');
 
+				  },
+				  
+				  error: function(xhr) {
+				    //Do Something to handle error
+				  }
 				});
+
 
 			});
 
