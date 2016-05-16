@@ -299,6 +299,14 @@
 			// http://192.168.8.207/api/web/show-offer.php?maCode=OOD_HS_Upgrade_Personal_NoPref_SamsungS5_2Gb&subscriberId=1463386475157_Mozilla%2F5.0_(Windows_NT_6.1%3B_WOW64)_AppleWebKit%2F537.36_(KHTML%2C_like_Gecko)_Chrome%2F50.0.2661.94_Safari%2F537.36&isStarted=false
 
 			var myParams = QueryString;
+			var fields = UserSession.getUserInfo().sessionFields;
+			
+			for(var i = 0; i<fields.length; i++){
+				if(fields[i].name === "msisdn"){
+					myParams.msisdn = fields[i].value;
+				}
+			}
+
 			myParams.subscriberId = window.localStorage.getItem('subId');
 
 			$.ajax({

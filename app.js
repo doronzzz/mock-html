@@ -7,8 +7,8 @@
 
 			$(function(){
 				
-				if( UserSession.has('phoneNum') ) {
-					$('body').addClass('is-logged-in')
+				if( UserSession.has('msisdn') ) {
+					$('body').addClass('is-logged-in');
 				}
 
 				$(".myNewComMenuItem").hover(
@@ -32,7 +32,7 @@
 					var phoneInput = $('.login input')[0];
 					var fields = [{
 								'type':'text',
-								'name':'phoneNum',
+								'name':'msisdn',
 								'value':$(phoneInput).val()
 							}]
 

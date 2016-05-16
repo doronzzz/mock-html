@@ -470,10 +470,19 @@
 		<script src="app.js"></script>
 		<script>
 			UserSession.logInUser([]);
+			var myData = {subscriberId:window.localStorage.getItem('subId')};
+			var fields = UserSession.getUserInfo().sessionFields;
+			
+			for(var i = 0; i<fields.length; i++){
+				if(fields[i].name === "msisdn"){
+					myData.msisdn = fields[i].value;
+				}
+			}
+
 			$.ajax({
 				  url: API.endPoints.offers.url,
 				  type: "get", //send it through get method
-				  data:{subscriberId:window.localStorage.getItem('subId')},
+				  data:myData,
 				  success: function(response,status,xhr) {
 				    //Do Something
 				    var obj = JSON.parse(response);
