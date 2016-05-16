@@ -49,17 +49,16 @@ function arrayUnique(array) {
 					sessionFields:fields
 				}
 
-				var merged = $.extend( true, currentSession,userSession );
 				if(currentSession && currentSession.sessionFields){
-					for(var curField in currentSession.sessionFields){
-						merged.sessionFields.push(currentSession.sessionFields[curField]);
+					for(var item in fields){
+						currentSession.sessionFields.push(fields[item]);
 					}
 				}
 				
-				var uniqeFields = arrayUnique(merged.sessionFields);
-				merged.sessionFields = uniqeFields;
+				var uniqeFields = arrayUnique(currentSession.sessionFields);
+				currentSession.sessionFields = uniqeFields;
 
-				var str = JSON.stringify(merged);
+				var str = JSON.stringify(currentSession);
 				window.localStorage.setItem(private.sessionName,str);
 				return private.getUser();
 			}
