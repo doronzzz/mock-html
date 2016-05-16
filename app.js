@@ -5,7 +5,7 @@
 
 					UserSession.logInUser(fields);
 					var subId = UserSession.getUserInfo().subId;
-					var msisdn = UserSession.getUserInfo().getField('msisdn');
+					var msisdn = UserSession.getField('msisdn');
 					var myData = {subscriberId:subId,url:window.location.href};
 					if(msisdn){
 						myData.msisdn = msisdn;
