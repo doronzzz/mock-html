@@ -58,6 +58,7 @@ function arrayUnique(array) {
 
 					var uniqeFields = arrayUnique(currentSession.sessionFields);
 					currentSession.sessionFields = uniqeFields;
+					currentSession.subId = private.getSubId();
 
 					str = JSON.stringify(currentSession);
 				}
@@ -71,9 +72,9 @@ function arrayUnique(array) {
 				var currentSubId = window.localStorage.getItem('subId');
 				var mySubId
 				if(currentSubId){
-					mySubId = currentSubId
+					mySubId = currentSubId;
 				}else{
-					window.localStorage.setItem('subId',subId);
+					window.localStorage.setItem( 'subId', encodeURIComponent( subId ) );
 				}
 
 				return mySubId;
