@@ -314,6 +314,8 @@
 				    	return;
 				    }
 
+				    obj.offer.moreDetailsBannerID = str.replace('jpg','png');
+
 					var source = $("#offer_item_template").html();
 					var template = Handlebars.compile(source);
 					var context = obj;
@@ -333,36 +335,33 @@
 			
 		   <div class="item active" style="background:url(resources/product-bg.png); height:549px;background-size:100%; padding:32px;">
 				    	<h3 class="blue-color" style="font-size:32px; text-align:center;">
-				    		Get NEW Samsung with 6 GB and FREE benefit
+				    		{{offer.title}}
 				    	</h3>
 						<div class="row">
 							<div class="col-md-6 bnr">
-								<img src="resources/iphone.png"/>
+								<img src="{{offer.moreDetailsBannerID}}"/>
 							</div>
 							<div class="col-md-6">
 								<div>
 									<div class="seperator"></div>
 									
 									<h3 class="blue-color">
-										Upgrade to Samsung with 6 GB Bundle
+										{{offer.effortText}}
 									</h3>
 
-									
-
 									<h5>
-										Get FREE "Facebook" for 3 months
-										
+										{{offer.benefitText}}										
 									</h5>
 
 									<h5>
-										only XX EUR/month
+										only {{offer.price}} EUR/month
 									</h5>
 
-									<div class="btn btn-success rounded-btn">ORDER NOW</div>
+									<div class="btn btn-success rounded-btn">{{offer.buttonText}}</div>
 
 									<div style="padding:0px 22px;">
 										<small class="text-muted">
-										Hurry up - offer is valid until DD.MM.YY!
+										valid until {{offer.validFor}}
 										</small>
 									</div>
 
