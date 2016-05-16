@@ -49,16 +49,19 @@ function arrayUnique(array) {
 					sessionFields:fields
 				}
 
+				var str = JSON.stringify(userSession);
+
 				if(currentSession && currentSession.sessionFields){
 					for(var item in fields){
 						currentSession.sessionFields.push(fields[item]);
 					}
+
+					var uniqeFields = arrayUnique(currentSession.sessionFields);
+					currentSession.sessionFields = uniqeFields;
+
+					str = JSON.stringify(currentSession);
 				}
 				
-				var uniqeFields = arrayUnique(currentSession.sessionFields);
-				currentSession.sessionFields = uniqeFields;
-
-				var str = JSON.stringify(currentSession);
 				window.localStorage.setItem(private.sessionName,str);
 				return private.getUser();
 			}
