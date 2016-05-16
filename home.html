@@ -34,27 +34,27 @@
 					Keep in touch
 				</h4>
 
-				{{#each fields.fieldsObj.text}}
+				{{#each fields.text}}
 					<div class="fields">
 						<input class="form-control" type="text" name="{{name}}" placeholder="{{fieldName}}"/>
 					</div>
 				{{/each}}
 
-				{{#each fields.fieldsObj.checkbox}}
+				{{#each fields.checkbox}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
 						<input class="form-control" type="checkbox" name="{{name}}"/>
 					</div>
 				{{/each}}
 
-				{{#each fields.fieldsObj.email}}
+				{{#each fields.email}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
 						<input class="form-control" type="email" name="{{name}}"/>
 					</div>
 				{{/each}}
 
-				{{#each fields.fieldsObj.password}}
+				{{#each fields.password}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
 						<input class="form-control" type="password" name="{{name}}"/>
@@ -520,6 +520,8 @@
 				    	return;
 				    }
 
+				    var showFieldsDialog = false;
+
 					for (var i in obj.offers){
 
 						if(obj.offers[i].imageId){
@@ -528,6 +530,11 @@
 						}
 
 						if(obj.offers[i].requiredFields){
+							
+							if(obj.offers[i].requiredFields.length){
+								showFieldsDialog = true;
+							}
+
 							for( var fld = 0; fld<obj.offers[i].requiredFields.length; fld++){
 								var zisField = obj.offers[i].requiredFields[fld];
 								if(zisField.type === "text"){
@@ -547,9 +554,7 @@
 
 					}
 
-					console.log(arr);
-
-					if(arr.length !== 0){
+					if(showFieldsDialog){
 						$('body').addClass('show-email-dialog');
 							
 						var source = $("#user-fields-modal").html();
