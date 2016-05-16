@@ -36,13 +36,13 @@
 
 				{{#each fields.text}}
 					<div class="fields">
-						<input class="form-control" type="text" name="{{name}}" placeholder="{{fieldName}}"/>
+						<input class="form-control" data-type="{{type}}" type="text" name="{{name}}" placeholder="{{fieldName}}"/>
 					</div>
 				{{/each}}
 
 				{{#each fields.checkbox}}
 					<div class="fields form-control">
-						<input class="" type="checkbox" name="{{name}}"/>
+						<input class="" type="checkbox" data-type="{{type}}" name="{{name}}"/>
 						<label>{{fieldName}}</label>
 					</div>
 				{{/each}}
@@ -50,14 +50,14 @@
 				{{#each fields.email}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
-						<input class="form-control" type="email" name="{{name}}"/>
+						<input class="form-control" type="email" data-type="{{type}}" name="{{name}}"/>
 					</div>
 				{{/each}}
 
 				{{#each fields.password}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
-						<input class="form-control" type="password" name="{{name}}"/>
+						<input class="form-control" type="password" data-type="{{type}}" name="{{name}}"/>
 					</div>
 				{{/each}}
 

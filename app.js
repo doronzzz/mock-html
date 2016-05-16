@@ -71,8 +71,17 @@
 						
 						var fName = $(inputs[i]).attr('name');
 						var fVal = $(inputs[i]).val();
+						var type = $(inputs[i]).attr('data-type');
+						
+						if(fVal === "on"){
+							fVal = true;
+						}
+						if(fVal === "off"){
+							fVal = false;
+						}
+
 						var field = {
-							'type':'text',
+							'type':type,
 							'name': fName,
 							'value': fVal
 						}
