@@ -76,6 +76,7 @@
 						if(fVal === "on"){
 							fVal = true;
 						}
+						
 						if(fVal === "off"){
 							fVal = false;
 						}
