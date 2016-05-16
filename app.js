@@ -70,13 +70,13 @@
 					UserSession.logInUser(fields);
 					var subId = UserSession.getUserInfo().subId;
 					var bodyParams = UserSession.getUserInfo().sessionFields;
-					bodyParams.push({"value": subId,name:"subscriberId"});
-					bodyParams.push({"value": window.location.href,name:"referer"})
+					// bodyParams.push({"value": subId,name:"subscriberId"});
+					// bodyParams.push({"value": window.location.href,name:"referer"})
 
 					$.ajax({
 						type:"post",
-						url:"/api/web"+API.endPoints.updateSubscriber.url + "?subscriberId=" + subId ,
-						data:{requiredFields:JSON.stringify(bodyParams)}
+						url:"/api/web"+API.endPoints.updateSubscriber.url,
+						data:{requiredFields:JSON.stringify(bodyParams),subscriberId:subId,referer:window.location.href}
 					});
 
 					$('body').removeClass('show-email-dialog');
