@@ -11,6 +11,10 @@
 					$('body').addClass('is-logged-in');
 				}
 
+				$('.myNewComMenuItem').click(function(){
+					window.location.href = "/demo4/contract.html";
+				});
+
 				$(".myNewComMenuItem").hover(
 				  function() {
 				    $( 'body' ).addClass( "mega-menu" );

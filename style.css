@@ -367,6 +367,14 @@ body.is-logged-in .logged-in {
   display: inline-block;
 }
 
+body.is-logged-in li.myNewComMenuItem{
+  display: inline-block;
+}
+
+li.myNewComMenuItem {
+    display: none;
+}
+
 body .logged-in {
   display: none;
 }
