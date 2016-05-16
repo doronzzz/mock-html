@@ -295,11 +295,11 @@
 						var optin = $(e.target).attr('data-optin');
 						var subId = UserSession.getUserInfo().subId;
 						var msisdn = UserSession.getField('msisdn');
-						var myData = {subscriberId:subId,url:window.location.href};
+						var myData = {subscriberId:subId};
 						if(msisdn){
 							myData.msisdn = msisdn.value;
 						}
-						
+
 						myData.optinCode = optin;
 						
 							$.ajax({
