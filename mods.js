@@ -1,3 +1,13 @@
+function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i].name === a[j].name)
+                a.splice(j--, 1);
+        }
+    }
+    return a;
+}
 
 	var QueryString = function () {
 	  // This function is anonymous, is executed immediately and 
@@ -40,14 +50,15 @@
 				}
 
 				var merged = $.extend( true, currentSession,userSession );
-
 				if(currentSession && currentSession.sessionFields){
 					for(var curField in currentSession.sessionFields){
 						merged.sessionFields.push(currentSession.sessionFields[curField]);
 					}
 				}
 				
-
+				var uniqeFields = arrayUnique(merged.sessionFields);
+				merged.sessionFields = uniqeFields;
+				
 				var str = JSON.stringify(merged);
 				window.localStorage.setItem(private.sessionName,str);
 				return private.getUser();
