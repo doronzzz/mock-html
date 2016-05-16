@@ -507,3 +507,88 @@ body.show-email-dialog .req-email-dialog {
 
 /***** PRODUCT END ****/
 
+
+
+
+
+
+
+nav .container {
+    position: relative;
+}
+
+#myNewComMenu .col-md-3:nth-child(2) {
+    border-right: 1px solid #277fb8;
+    border-left: 1px solid #277fb8;
+}
+
+#myNewComMenu .col-md-3:nth-child(4) {
+    border-left: 1px solid #277fb8;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.myNewComMenuItem:hover{
+    background: #f3f1ef;
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+    height: 65px;
+}
+
+
+.myNewComMenuItem:hover .glyphicon-menu-up{
+  display: inline-block;
+}
+
+.myNewComMenuItem:hover .glyphicon-menu-down{
+  display: none;
+}
+
+.glyphicon-menu-up{
+  display: none;
+}
+
+li.myNewComMenuItem .icons {
+    font-size: 11px;
+    position: relative;
+    top: -3px;
+}
+
+
+body.mega-menu div#myNewComMenu {
+  display: block;
+}
+
+div#myNewComMenu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 63px;
+    background: #f3f1ef;
+    text-align: left;
+    padding: 14px;
+    right: 0px;
+    box-shadow: 0px 15px 15px -15px #333;
+    z-index: 9;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+#myNewComMenu .row{
+  padding:15px 0px;
+}
+
+#myNewComMenu .header {
+    color: #277fb8;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+#myNewComMenu .links div {
+    font-size: 12px;
+    cursor: pointer;
+    margin: 6px 0px;
+}

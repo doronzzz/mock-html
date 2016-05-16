@@ -67,6 +67,23 @@
 					$('body').addClass('is-logged-in')
 				}
 
+				$(".myNewComMenuItem").hover(
+				  function() {
+				    $( 'body' ).addClass( "mega-menu" );
+				  }, function() {
+				    $( 'body' ).removeClass( "mega-menu" );
+				  }
+				);
+
+				$("#myNewComMenu").hover(
+				  function() {
+				    $( 'body' ).addClass( "mega-menu" );
+				  }, function() {
+				    $( 'body' ).removeClass( "mega-menu" );
+				  }
+				);
+
+
 				$('.login .btn-block').on('click',function(e){
 					var phoneInput = $('.login input')[0];
 					var fields = [{
