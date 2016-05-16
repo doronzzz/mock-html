@@ -2,8 +2,6 @@
 			$(function(){
 				UserSession.logInUser([]);
 				console.log(UserSession.getUserInfo());
-
-					UserSession.logInUser(fields);
 					var subId = UserSession.getUserInfo().subId;
 					var msisdn = UserSession.getField('msisdn');
 					var myData = {subscriberId:subId,url:window.location.href};
