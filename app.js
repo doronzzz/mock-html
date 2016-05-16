@@ -1,6 +1,6 @@
 
 			$(function(){
-
+				UserSession.logInUser([]);
 				console.log(UserSession.getUserInfo());
 
 				$.ajax({
@@ -58,7 +58,6 @@
 
 			$(function(){
 				
-				UserSession.logInUser([]);
 				if( UserSession.has('phoneNum') ) {
 					$('body').addClass('is-logged-in')
 				}
