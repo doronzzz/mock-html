@@ -9,7 +9,7 @@
 				  data:{subscriberId:window.localStorage.getItem('subId')},
 				  success: function(response,status,xhr) {
 				    //Do Something
-
+				    var obj = JSON.parse(response);
 				    var arr = [];
 
 					for (var i in obj.offers){
@@ -46,7 +46,7 @@
 					$($('.carousel-inner .item')[0]).addClass('active');
 
 				  },
-				  
+
 				  error: function(xhr) {
 				    //Do Something to handle error
 				  }
