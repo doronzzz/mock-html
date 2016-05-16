@@ -40,13 +40,6 @@
 					</div>
 				{{/each}}
 
-				{{#each fields.checkbox}}
-					<div class="fields form-control">
-						<input class="" type="checkbox" data-type="{{type}}" name="{{name}}"/>
-						<label>{{fieldName}}</label>
-					</div>
-				{{/each}}
-
 				{{#each fields.email}}
 					<div class="fields">
 						<label>{{fieldName}}</label>
@@ -58,6 +51,13 @@
 					<div class="fields">
 						<label>{{fieldName}}</label>
 						<input class="form-control" type="password" data-type="{{type}}" name="{{name}}"/>
+					</div>
+				{{/each}}
+
+				{{#each fields.checkbox}}
+					<div class="fields form-control">
+						<input class="" type="checkbox" data-type="{{type}}" name="{{name}}"/>
+						<label>{{fieldName}}</label>
 					</div>
 				{{/each}}
 
