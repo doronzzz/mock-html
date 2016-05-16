@@ -79,6 +79,11 @@
 					window.location.reload();
 				});
 
+				$('.logged-in').on('click',function(){
+					window.localStorage.clear();
+					window.location.reload();
+				});
+
 
 				$(document).on('click','#submit-fields',function(){
 
