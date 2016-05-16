@@ -103,6 +103,8 @@
 					}
 
 					UserSession.logInUser(fields);
+					$('body').removeClass('show-email-dialog');
+
 
 				});
 					
