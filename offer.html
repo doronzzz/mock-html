@@ -16,45 +16,6 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-			<script type="text/x-handlebars-template" id="product_template">
-				<div id="carousel-example-generic" class="carousel home-car slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				  	{{#each offers}}
-					    	<li data-target="#carousel-example-generic" data-slide-to="{{@index}}">
-					    	</li>
-				    {{/each}}
-				  </ol>
-
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner" role="listbox">
-						  {{#each offers}}
-						  	<div class="item">
-								<div class="row">
-									<div class="col-md-6">
-										<img src="resources/devices-icon.png"/>
-									</div>
-									<div class="col-md-6">
-										<div>
-											<h3>Great Devices.</h3>
-											<h3>Affordable Prices.</h3>
-										</div>
-										<p class="text-muted">
-											{{text}}
-										</p>
-										<a class="btn btn-success rounded-btn" href="product.html">
-											SHOP NOW
-										</a>
-									</div>
-								</div>
-						    </div>
-						  {{/each}}
-				  </div>
-
-				</div>
-		</script>
-
-
 		<script>
 			$(function(){
 				$('.sign-in').on('click',function(){
@@ -330,6 +291,24 @@
 					var context = obj;
 					var html = template(context);
 					$('body .product-main-banner').append(html);
+					$('.item .rounded-btn').on('click',function(e){
+						var optin = $(e.target).attr('data-optin');
+						var subId = UserSession.getUserInfo().subId;
+						var msisdn = UserSession.getField('msisdn');
+						var myData = {subscriberId:subId,url:window.location.href};
+						if(msisdn){
+							myData.msisdn = msisdn.value;
+						}
+						
+						myData.optin = optin;
+						
+							$.ajax({
+								type:"post",
+								url:"/api/web"+API.endPoints.optIn.url,
+								data:myData
+							});
+
+					});
 
 				  },
 
@@ -366,7 +345,7 @@
 										only {{offer.price}} EUR/month
 									</h5>
 
-									<div class="btn btn-success rounded-btn">{{offer.buttonText}}</div>
+									<div class="btn btn-success rounded-btn" data-optin="{{offer.optinCode}}">{{offer.buttonText}}</div>
 
 									<div style="padding:0px 22px;">
 										<small class="text-muted">
@@ -382,10 +361,6 @@
 				    </div>
 
 		</script>
-
-
-		<script src="mods.js" type="text/javascript"></script>
-		<script src="app.js"></script>
 		
 	</body>
 
