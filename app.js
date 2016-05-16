@@ -76,7 +76,7 @@
 					$.ajax({
 						type:"post",
 						url:"/api/web"+API.endPoints.updateSubscriber.url,
-						data:bodyParams
+						data:{requiredFields:bodyParams}
 					});
 
 					$('body').removeClass('show-email-dialog');
