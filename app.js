@@ -11,6 +11,11 @@
 				    //Do Something
 				    var obj = JSON.parse(response);
 				    var arr = [];
+				    
+				    //if error do nothing.
+				    if(obj.status.success === "false"){
+				    	return;
+				    }
 
 					for (var i in obj.offers){
 
