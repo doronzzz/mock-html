@@ -58,7 +58,7 @@ function arrayUnique(array) {
 				
 				var uniqeFields = arrayUnique(merged.sessionFields);
 				merged.sessionFields = uniqeFields;
-				
+
 				var str = JSON.stringify(merged);
 				window.localStorage.setItem(private.sessionName,str);
 				return private.getUser();
@@ -121,7 +121,7 @@ function arrayUnique(array) {
 
 	var API = (function(){
 		var public = {}
-
+		var baseURL = "//192.168.8.20";
 		public.endPoints = {
 			// Parameters
 			// subscriberId
@@ -148,7 +148,7 @@ function arrayUnique(array) {
 			//       3)   maCode
 			// 	The maCode (returned in the get-offers api)
 
-			'showOffer':{url:'api/web/show-offer.php',type:"get"},
+			'showOffer':{url:'/api/web/show-offer.php',type:"get"},
 
 
 			// POST
@@ -169,7 +169,7 @@ function arrayUnique(array) {
 			// Optional
 			//       3)   maCode
 			// 	The maCode (returned in the get-offers api)
-			'selectOffer':{url:'select-offer.php',type:"post"},
+			'selectOffer':{url:'/select-offer.php',type:"post"},
 
 			// Update subscriber
 			// POST
@@ -195,7 +195,7 @@ function arrayUnique(array) {
 			// }
 			// }
 
-			'updateSubscriber':{url:'update-subscriber.php',type:"post"},
+			'updateSubscriber':{url:'/update-subscriber.php',type:"post"},
 
 
 
@@ -219,7 +219,7 @@ function arrayUnique(array) {
 			// }
 			// }
 
-			'optIn':{url:'optin.php',type:"post"},
+			'optIn':{url:'/optin.php',type:"post"},
 
 			/*
 			Browse
@@ -244,7 +244,7 @@ function arrayUnique(array) {
 			}
 			}
 			*/
-			'browse':{url:'browse.php',type:"post"},
+			'browse':{url:'/browse.php',type:"post"},
 
 
 		}
