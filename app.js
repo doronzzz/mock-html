@@ -64,6 +64,17 @@
 					}
 
 					UserSession.logInUser(fields);
+
+					var bodyParams = UserSession.getUserInfo().sessionFields;
+					bodyParams.push({"value": UserSession.getUserInfo().subId,name:"subscriberId"});
+					bodyParams.push({"value": window.location.href,name:"referer"})
+
+					$.ajax({
+						type:"post",
+						url:"/api/web"+API.endPoints.updateSubscriber.url,
+						data:bodyParams
+					});
+
 					$('body').removeClass('show-email-dialog');
 
 
