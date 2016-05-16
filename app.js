@@ -2,6 +2,21 @@
 			$(function(){
 				UserSession.logInUser([]);
 				console.log(UserSession.getUserInfo());
+
+					UserSession.logInUser(fields);
+					var subId = UserSession.getUserInfo().subId;
+					var msisdn = UserSession.getUserInfo().getField('msisdn');
+					var myData = {subscriberId:subId,url:window.location.href};
+					if(msisdn){
+						myData.msisdn = msisdn;
+					}
+					
+					$.ajax({
+						type:"post",
+						url:"/api/web"+API.endPoints.browse.url,
+						data:myData
+					});
+
 			});
 
 

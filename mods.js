@@ -105,8 +105,27 @@ function arrayUnique(array) {
 				return bool;
 			}
 
+			private.get = function(fieldName){
+				var user = private.getUser();
+				var ans = null;
+				if(user && user.sessionFields){
+					for(var curField in user.sessionFields){
+						if( user.sessionFields[curField]['name'] == fieldName ){
+							ans = user.sessionFields[curField];
+							break;
+						}
+					}
+				}
+
+				return ans;
+			}
+
 			public.has = function(fieldName){
 				return private.hasFieldInSession(fieldName);
+			}
+
+			public.getField = function(fieldName){
+				return private.get(fieldName);
 			}
 
 			public.logInUser = function(fieldsArr){
