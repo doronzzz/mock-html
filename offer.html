@@ -272,7 +272,9 @@
 				}
 			}
 
-			myParams.subscriberId = window.localStorage.getItem('subId');
+			if(!myParams.subscriberId){
+				myParams.subscriberId = window.localStorage.getItem('subId');				
+			}
 
 			$.ajax({
 				  url: API.endPoints.showOffer.url,
@@ -311,7 +313,7 @@
 								url:"/api/web"+API.endPoints.optIn.url,
 								data:myData,
 								success:function(res,status,xhr){
-									window.location.href = "/"
+									window.location.href = "/";
 								}
 							});
 
