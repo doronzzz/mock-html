@@ -248,7 +248,7 @@
 		<div class="container">
 
 			<div id="carousel-container">
-				<img src="resources/welcome.jpg" style="width:100%;"/>
+				<img src="resources/welcome.jpg" style="width:100%;" id="welcomeImg"/>
 			</div>
 
 
@@ -567,6 +567,7 @@
 					var template = Handlebars.compile(source);
 					var context = obj;
 					var html = template(context);
+					$("#welcomeImg").remove();
 					$('body #carousel-container').append(html);
 					$($('.carousel-indicators li')[0]).addClass('active');
 					$($('.carousel-inner .item')[0]).addClass('active');

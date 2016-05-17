@@ -108,6 +108,7 @@
 						});
 
 						$('body').removeClass('show-email-dialog');
+						window.location.reload();
 					}
 					
 				});
