@@ -164,7 +164,7 @@
 
 				$('.logged-in').on('click',function(){
 					window.localStorage.clear();
-					window.location.reload();
+					window.location.href = "/"; 
 				});
 
 
