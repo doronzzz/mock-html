@@ -613,10 +613,13 @@ div#myNewComMenu {
 .product-main-banner .row {
     background: white;
     position: absolute;
-    top: 215px;
+    bottom: 25px;
     right: 30px;
     text-align: center;
     padding: 20px;
+    box-shadow: 1px 5px 10px #333;
+    width: 350px;
+    height: 360px;
 }
 
 .benefitTextIntro {
@@ -627,6 +630,10 @@ div#myNewComMenu {
 .product-main-banner .row .rounded-btn {
     text-transform: uppercase;
     padding: 12px 60px;
+}
+
+.product-main-banner .row h3.blue-color {
+    position: static;
 }
 
 .ribbon {
