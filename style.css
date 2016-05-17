@@ -599,3 +599,42 @@ div#myNewComMenu {
     cursor: pointer;
     margin: 6px 0px;
 }
+
+
+
+
+
+
+.product-main-banner h3.blue-color {
+    position: relative;
+    top: 25px;
+}
+
+.product-main-banner .row {
+    background: white;
+    position: absolute;
+    top: 215px;
+    right: 30px;
+    text-align: center;
+    padding: 20px;
+}
+
+.benefitTextIntro {
+    font-weight: normal;
+    margin: 8px 0px;
+}
+
+.product-main-banner .row .rounded-btn {
+    text-transform: uppercase;
+    padding: 12px 60px;
+}
+
+.ribbon {
+    background-image: url(resources/ribbon.png);
+    background-repeat: no-repeat;
+    height: 70px;
+    position: absolute;
+    width: 300px;
+    color: transparent;
+    top: -10px;
+}
