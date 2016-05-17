@@ -67,48 +67,49 @@
 				});
 
 
-				$(document).on('click','#submit-fields',function(){
+				$(document).on('click','#submit-fields , .modal-overlay , .close-dialog',function(){
+					if(	$('body').hadClass("show-email-dialog")	){
 
-					var fields = [];
-					var inputs = $('.req-email-dialog .fields input');
-					for (var i = 0; i<inputs.length; i++){
-						
-						var fName = $(inputs[i]).attr('name');
-						var fVal = $(inputs[i]).val();
-						var type = $(inputs[i]).attr('data-type');
-						
-						if(fVal === "on"){
-							fVal = true;
+						var fields = [];
+						var inputs = $('.req-email-dialog .fields input');
+						for (var i = 0; i<inputs.length; i++){
+							
+							var fName = $(inputs[i]).attr('name');
+							var fVal = $(inputs[i]).val();
+							var type = $(inputs[i]).attr('data-type');
+							
+							if(fVal === "on"){
+								fVal = true;
+							}
+
+							if(fVal === "off"){
+								fVal = false;
+							}
+
+							var field = {
+								'type':type,
+								'name': fName,
+								'value': fVal
+							}
+
+							fields.push(field);
 						}
 
-						if(fVal === "off"){
-							fVal = false;
-						}
+						UserSession.logInUser(fields);
+						var subId = UserSession.getUserInfo().subId;
+						var bodyParams = UserSession.getUserInfo().sessionFields;
+						// bodyParams.push({"value": subId,name:"subscriberId"});
+						// bodyParams.push({"value": window.location.href,name:"referer"})
 
-						var field = {
-							'type':type,
-							'name': fName,
-							'value': fVal
-						}
+						$.ajax({
+							type:"post",
+							url:"/api/web"+API.endPoints.updateSubscriber.url,
+							data:{requiredFields:JSON.stringify(bodyParams),subscriberId:subId,referer:window.location.href}
+						});
 
-						fields.push(field);
+						$('body').removeClass('show-email-dialog');
 					}
-
-					UserSession.logInUser(fields);
-					var subId = UserSession.getUserInfo().subId;
-					var bodyParams = UserSession.getUserInfo().sessionFields;
-					// bodyParams.push({"value": subId,name:"subscriberId"});
-					// bodyParams.push({"value": window.location.href,name:"referer"})
-
-					$.ajax({
-						type:"post",
-						url:"/api/web"+API.endPoints.updateSubscriber.url,
-						data:{requiredFields:JSON.stringify(bodyParams),subscriberId:subId,referer:window.location.href}
-					});
-
-					$('body').removeClass('show-email-dialog');
-
-
+					
 				});
 					
 
