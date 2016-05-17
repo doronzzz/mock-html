@@ -80,7 +80,7 @@
 							var template = Handlebars.compile(source);
 							var context = obj;
 							var html = template(context);
-							$("#welcomeImg").remove();
+							$('#carousel-container').html('');
 							$('body #carousel-container').append(html);
 							$($('.carousel-indicators li')[0]).addClass('active');
 							$($('.carousel-inner .item')[0]).addClass('active');
