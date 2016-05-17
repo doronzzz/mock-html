@@ -633,11 +633,26 @@ div#myNewComMenu {
 
 .product-main-banner .row .rounded-btn {
     text-transform: uppercase;
-    padding: 12px 60px;
+    padding: 16px 70px;
 }
 
 .product-main-banner .row h3.blue-color {
     position: static;
+    font-size: 31px;
+}
+
+.validFor{
+  font-size: 12px;
+}
+
+.price{
+    font-size: 20px;
+    font-weight: 200;
+    color: #727479;
+}
+
+h5.benefits{
+  height:150px;
 }
 
 .ribbon {
