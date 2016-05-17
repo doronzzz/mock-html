@@ -225,7 +225,7 @@
 
 				$(document).on('click','.close-dialog', function(){
 					$('body').removeClass('show-login-dialog');
-					// $('body').removeClass('show-email-dialog');
+					$('body').removeClass('thanksDialog');
 				});
 
 				$('.modal-overlay').on('click',function(){

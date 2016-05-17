@@ -260,7 +260,21 @@
 			$('.sign-in').on('click',function(){
 				$('body').toggleClass('show-login-dialog');
 			});	
-			
+
+			$(document).on('click','.close-dialog', function(){
+				$('body').removeClass('thanksDialog');
+				if($('.thankYouMsg').length !== 0){
+					$('.thankYouMsg').remove();
+				}
+			});
+
+			$(document).on('click','.modal-overlay', function(){
+				$('body').removeClass('thanksDialog');
+				if($('.thankYouMsg').length !== 0){
+					$('.thankYouMsg').remove();
+				}
+			});
+
 			// http://192.168.8.207/api/web/show-offer.php?maCode=OOD_HS_Upgrade_Personal_NoPref_SamsungS5_2Gb&subscriberId=1463386475157_Mozilla%2F5.0_(Windows_NT_6.1%3B_WOW64)_AppleWebKit%2F537.36_(KHTML%2C_like_Gecko)_Chrome%2F50.0.2661.94_Safari%2F537.36&isStarted=false
 			var sFields = UserSession.getUserInfo()
 			var myParams = QueryString;
@@ -308,14 +322,21 @@
 
 						myData.optinCode = optin;
 						
-							$.ajax({
-								type:"post",
-								url:"/api/web"+API.endPoints.optIn.url,
-								data:myData,
-								success:function(res,status,xhr){
+						$.ajax({
+							type:"post",
+							url:"/api/web"+API.endPoints.optIn.url,
+							data:myData,
+							success:function(res,status,xhr){
+								var source = $("#thanks-modal").html();
+								var template = Handlebars.compile(source);
+								var html = template();
+								$('body').append(html);
+								$('body').addClass('thanksDialog');
+								$('#thanksBtn').on('click',function(e){
 									window.location.href = "/";
-								}
-							});
+								});
+							}
+						});
 
 					});
 
@@ -373,6 +394,31 @@
 				    </div>
 
 		</script>
+
+
+		<script type="text/x-handlerbars-template" id="thanks-modal">
+			
+
+			<div class="thankYouMsg">
+				<div class="close-dialog pull-right">
+					<i class="fa fa-close"></i>
+				</div>
+
+				<h4>
+					Thank you!
+				</h4>
+
+				<div class="thanksIcon color-blue blue-color">
+					<i class="glyphicon glyphicon-ok"></i>
+				</div>
+
+				<div class="btn btn-primary btn-lg btn-block" id="thanksBtn">
+					CLOSE
+				</div>
+			</div>
+
+		</script>
+
 		
 	</body>
 
