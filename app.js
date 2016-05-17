@@ -9,6 +9,10 @@
 						myData.msisdn = msisdn.value;
 					}
 					
+					if(window.location.href.indexOf('contract')){
+						myData.tag = "Contract_details_page"
+					};
+
 					$.ajax({
 						type:"post",
 						url:"/api/web"+API.endPoints.browse.url,
@@ -25,7 +29,7 @@
 				}
 
 				$('.myNewComMenuItem').click(function(){
-					window.location.href = "/demo4/contract.html";
+					window.location.href = "/contract.html";
 				});
 
 				$(".myNewComMenuItem").hover(
@@ -76,7 +80,7 @@
 						if(fVal === "on"){
 							fVal = true;
 						}
-						
+
 						if(fVal === "off"){
 							fVal = false;
 						}
