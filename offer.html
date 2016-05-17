@@ -139,7 +139,7 @@
 		    			<div class="links">
 		    				<div>Recent Bills</div>
 		    				<div>What you've used</div>
-		    				<div>Contract Details</div>
+		    				<div id="goToContract">Contract Details</div>
 		    			</div>
 		    		</div>
 		    		<div class="col-md-3">
@@ -359,7 +359,7 @@
 
 									<div class="btn btn-success rounded-btn" data-optin="{{offer.optinCode}}">{{offer.buttonText}}</div>
 
-									<div style="padding:0px 40px;">
+									<div style="padding:0px 40px;" class="validFor">
 										<small class="text-muted">
 										Hurry Up! - offer is valid until	{{offer.validFor}}
 										</small>

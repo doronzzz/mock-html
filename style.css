@@ -615,15 +615,16 @@ div#myNewComMenu {
 }
 
 .product-main-banner .row {
-    background: rgba(255,255,255,0.75);
+     background: rgba(255,255,255,0.75);
     position: absolute;
-    bottom: 25px;
-    right: 30px;
+    bottom: 22px;
+    right: 40px;
     text-align: center;
     padding: 20px;
     box-shadow: 1px 5px 10px #333;
     width: 350px;
     height: 360px;
+    border-radius: 5px;
 }
 
 .benefitTextIntro {
@@ -633,7 +634,11 @@ div#myNewComMenu {
 
 .product-main-banner .row .rounded-btn {
     text-transform: uppercase;
-    padding: 16px 70px;
+    padding: 12px 60px;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-main-banner .row h3.blue-color {

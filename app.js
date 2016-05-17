@@ -129,7 +129,7 @@
 					$('body').addClass('is-logged-in');
 				}
 
-				$('.myNewComMenuItem').click(function(){
+				$('#goToContract').click(function(){
 					window.location.href = "/contract.html";
 				});
 
