@@ -615,13 +615,11 @@ div#myNewComMenu {
 }
 
 .product-main-banner .row {
-     background: rgba(255,255,255,0.75);
     position: absolute;
     bottom: 22px;
     right: 40px;
     text-align: center;
     padding: 20px;
-    box-shadow: 1px 5px 10px #333;
     width: 350px;
     height: 360px;
     border-radius: 5px;
@@ -644,6 +642,14 @@ div#myNewComMenu {
 .product-main-banner .row h3.blue-color {
     position: static;
     font-size: 31px;
+    height: 110px;
+    overflow: hidden;
+}
+
+h5.benefit {
+    height: 80px;
+    overflow: hidden;
+    font-size: 20px;
 }
 
 .validFor{
