@@ -68,7 +68,7 @@
 
 
 				$(document).on('click','#submit-fields , .modal-overlay , .close-dialog',function(){
-					if(	$('body').hadClass("show-email-dialog")	){
+					if(	$('body').hasClass("show-email-dialog")	){
 
 						var fields = [];
 						var inputs = $('.req-email-dialog .fields input');
