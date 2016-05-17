@@ -36,10 +36,10 @@
 
 							for (var i in obj.offers){
 
-								if(obj.offers[i].imageId){
-									var str = obj.offers[i].imageId;
-									obj.offers[i].imageId = str.replace('jpg','png');
-								}
+								// if(obj.offers[i].imageId){
+								// 	var str = obj.offers[i].imageId;
+								// 	obj.offers[i].imageId = str.replace('jpg','png');
+								// }
 
 								if(obj.offers[i].requiredFields){
 									
