@@ -325,35 +325,36 @@
 
 		<script type="x-handlebars-template" id="offer_item_template">
 			
-		   <div class="item active" style="background:url(resources/product-bg.png); height:549px;background-size:100%; padding:32px;">
+		   <div class="item active" style="background:url({{offer.moreDetailsBannerID}}); height:549px;background-size:cover; padding:32px;position:relative;">
+		   				<div class="ribbon">
+		   					Especially For You!
+		   				</div>
 				    	<h3 class="blue-color" style="font-size:32px; text-align:center;">
 				    		{{offer.title}}
 				    	</h3>
 						<div class="row">
-							<div class="col-md-6 bnr">
-								<img src="{{offer.moreDetailsBannerID}}" style="width:100%;"/>
-							</div>
-							<div class="col-md-6">
-								<div>
-									<div class="seperator"></div>
-									
+							<div class="">
+								<div>									
 									<h3 class="blue-color">
 										{{offer.effortText}}
 									</h3>
 
 									<h5>
-										{{offer.benefitText}}										
+										<div class="benefitTextIntro">
+											When Joining
+										</div>
+										{{offer.benefitText}}				
 									</h5>
 
 									<h5>
-										only {{offer.price}} EUR/month
+										Only {{offer.price}} EUR / month
 									</h5>
 
 									<div class="btn btn-success rounded-btn" data-optin="{{offer.optinCode}}">{{offer.buttonText}}</div>
 
-									<div style="padding:0px 22px;">
+									<div style="padding:0px 40px;">
 										<small class="text-muted">
-										valid until {{offer.validFor}}
+										Hurry Up! - offer is valid until	{{offer.validFor}}
 										</small>
 									</div>
 
