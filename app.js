@@ -119,12 +119,12 @@
 
 				$(document).on('click','.close-dialog', function(){
 					$('body').removeClass('show-login-dialog');
-					$('body').removeClass('show-email-dialog');
+					// $('body').removeClass('show-email-dialog');
 				});
 
 				$('.modal-overlay').on('click',function(){
 					$('body').removeClass('show-login-dialog');
-					$('body').removeClass('show-email-dialog');
+					// $('body').removeClass('show-email-dialog');
 				});
 
 			});
