@@ -9,7 +9,7 @@
 						myData.msisdn = msisdn.value;
 					}
 					
-					if(window.location.href.indexOf('contract')){
+					if(window.location.href.indexOf('contract') != -1){
 						myData.tag = "Contract_details_page"
 					};
 
