@@ -214,6 +214,7 @@ ul.nav li a{
 
 .plan-select-container{
 	padding:30px;
+  clear:both;
 }
 
 .plans-selection {
@@ -700,3 +701,64 @@ h5.benefits{
     color: transparent;
     top: -10px;
 }
+
+
+
+
+
+.banners-logged-out .home-banner-group {
+    
+}
+
+.row.banners-logged-out {
+    padding:0px 16px;
+}
+
+.home-banner-group .border-line {
+    /*top: 0px;*/
+}
+
+.banners-logged-out .pull-left.col-md-4 {
+  width:285px;
+}
+
+.banners-logged-in{
+  clear:both;
+  display: none;
+}
+
+.banners-logged-out{
+  display: block;
+}
+
+.home-banner.single-bnr {
+    text-align: left;
+    position: relative;
+    top:-25px;
+}
+
+.single-bnr span.h4 {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.single-bnr .item {
+    color: #3399cc;
+    margin-bottom: 2px;
+    border-bottom: 1px solid #d8d8d8;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 4px;
+    width: 100%;
+    cursor: pointer;
+}
+
+body.is-logged-in .banners-logged-in{
+  display: block;
+}
+
+body.is-logged-in .banners-logged-out{
+  display: none;
+}
+
+
