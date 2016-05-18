@@ -196,9 +196,16 @@
 							fields.push(field);
 						}
 
-						UserSession.logInUser(fields);
 						var subId = UserSession.getUserInfo().subId;
 						var bodyParams = UserSession.getUserInfo().sessionFields;
+
+						//user forces quite the dialog (close btn or overlay click)
+						if(!$(event.target).hasClass('modal-overlay') && !$(event.target).hasClass('fa-close')){
+							UserSession.logInUser(fields);
+						}else{
+							bodyParams = fields;
+						}
+
 						// bodyParams.push({"value": subId,name:"subscriberId"});
 						// bodyParams.push({"value": window.location.href,name:"referer"})
 
