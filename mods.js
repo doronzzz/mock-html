@@ -52,8 +52,9 @@ function arrayUnique(array) {
 				var str = JSON.stringify(userSession);
 
 				if(currentSession && currentSession.sessionFields){
+					
 					for(var item in fields){
-						currentSession.sessionFields.push(fields[item]);
+						currentSession.sessionFields.unshift(fields[item]);
 					}
 
 					var uniqeFields = arrayUnique(currentSession.sessionFields);

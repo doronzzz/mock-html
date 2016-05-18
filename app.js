@@ -125,7 +125,7 @@
 
 			$(function(){
 				
-				if( UserSession.has('msisdn') ) {
+				if( UserSession.has('msisdn') && UserSession.getField('msisdn').value !== "" ) {
 					$('body').addClass('is-logged-in');
 				}
 
